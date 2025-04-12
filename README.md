@@ -24,9 +24,9 @@ To run this project, you’ll need to install the following Python libraries:
 
 You can install the required libraries using `pip`:
 
-    ```bash
-    pip install pandas numpy matplotlib seaborn scikit-learn
-    ```
+   ```bash
+   pip install pandas numpy matplotlib seaborn scikit-learn
+   ```
 
 ## Project Structure
 
@@ -52,11 +52,11 @@ The target variable is the car price.
 
 1. Loading and Exploring the Data
 
-    ```bash
-    data = pd.read_csv("car_price_dataset.csv")
-    print(data.info())
-    print(data.isnull().sum())
-    ```
+   ```bash
+   data = pd.read_csv("car_price_dataset.csv")
+   print(data.info())
+   print(data.isnull().sum())
+   ```
 
 The dataset is loaded, and basic information like missing values and data types is displayed.
 
@@ -80,9 +80,9 @@ These models are evaluated using RMSE and R² metrics.
 
 4. Train-Test Split
 
-    ```bash
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    ```
+   ```bash
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+   ```
 
 The data is split into training and testing sets (80% training, 20% testing).
 
@@ -94,9 +94,9 @@ The models are evaluated based on their Root Mean Squared Error (RMSE) and R² s
 
 Using Random Forest Regressor, feature importances are visualized to understand which features are most significant in predicting car prices.
 
-    ```bash
-    importances = pipeline.named_steps['model'].feature_importances_
-    ```
+   ```bash
+   importances = pipeline.named_steps['model'].feature_importances_
+   ```
 
 This will plot a bar chart of the most important features.
 
@@ -104,10 +104,10 @@ This will plot a bar chart of the most important features.
 
 After training the models, we compare their performance:
 
-    ```bash
-    results_df = pd.DataFrame(results).T
-    print(results_df.sort_values(by='RMSE'))
-    ```
+   ```bash
+   results_df = pd.DataFrame(results).T
+   print(results_df.sort_values(by='RMSE'))
+   ```
 
 8. Results
 
@@ -129,10 +129,10 @@ The model performances (RMSE and R² scores) are printed and visualized in sorte
     ```
 
 4, Run the Python Script
-
-    ```bash
-    python main.py
-    ```
+ 
+   ```bash
+   python main.py
+   ```
 
 Results will be printed in the terminal, including model evaluation metrics and feature importance visualization.
 
@@ -140,25 +140,25 @@ Results will be printed in the terminal, including model evaluation metrics and 
 
 Here’s the Python code for visualizing the feature importances of the trained models (specifically Random Forest):
 
-    ```bash
-    importances = pipeline.named_steps['model'].feature_importances_
-    ohe = pipeline.named_steps['preprocessor'].named_transformers_['cat']
-    ohe_features = ohe.get_feature_names_out(categorical_features)
-    all_features = numerical_features + list(ohe_features)
+   ```bash
+   importances = pipeline.named_steps['model'].feature_importances_
+   ohe = pipeline.named_steps['preprocessor'].named_transformers_['cat']
+   ohe_features = ohe.get_feature_names_out(categorical_features)
+   all_features = numerical_features + list(ohe_features)
   
-    # Create a DataFrame
-    feature_importance_df = pd.DataFrame({'Feature': all_features, 'Importance': importances})
-    feature_importance_df.sort_values(by='Importance', ascending=True, inplace=True)
+   # Create a DataFrame
+   feature_importance_df = pd.DataFrame({'Feature': all_features, 'Importance': importances})
+   feature_importance_df.sort_values(by='Importance', ascending=True, inplace=True)
 
-    # Plot
-    plt.figure(figsize=(10, 8))
-    sns.barplot(x='Importance', y='Feature', data=feature_importance_df)
-    plt.xlabel('Feature Importance Score')
-    plt.ylabel('Features')
-    plt.title('Visualizing Important Features')
-    plt.tight_layout()
-    plt.show()
-    ```
+  # Plot
+  plt.figure(figsize=(10, 8))
+  sns.barplot(x='Importance', y='Feature', data=feature_importance_df)
+  plt.xlabel('Feature Importance Score')
+  plt.ylabel('Features')
+  plt.title('Visualizing Important Features')
+  plt.tight_layout()
+  plt.show()
+  ```
 
 ## Evaluation Metrics
 
